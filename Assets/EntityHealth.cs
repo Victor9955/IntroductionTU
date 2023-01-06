@@ -65,13 +65,14 @@ public class EntityHealth : MonoBehaviour
         {
             return;
         }
-        
-        _currentHealth += gain;
 
-        if (_currentHealth >= _maxHealth)
+        if (_currentHealth + gain >= _maxHealth)
         {
             _currentHealth = _maxHealth;
-            return;
+        }
+        else
+        {
+            _currentHealth += gain;
         }
         OnLifeChange?.Invoke();
     }
@@ -100,5 +101,10 @@ public class EntityHealth : MonoBehaviour
     {
         StartCoroutine(MaxHealthStart());
         StartCoroutine(MaxHealthStop());
+    }
+
+    public int GetMaxHealth()
+    {
+        return _maxHealth;
     }
 }

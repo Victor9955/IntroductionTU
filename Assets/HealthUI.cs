@@ -26,7 +26,7 @@ public class HealthUI : MonoBehaviour
     void UpdateSlider(int newHealthValue)
     {
         _slider.value = newHealthValue;
-        _text.text = $"{newHealthValue} / {CachedMaxHealth}";
+        _text.text = $"{newHealthValue} / {_playerHealth.GetMaxHealth()}";
     }
 
     private void OnDestroy()

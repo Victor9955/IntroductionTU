@@ -27,13 +27,13 @@ public class HitEntity : MonoBehaviour
 
     public void Hit()
     {
-        foreach (GameObject item in currents)
+        for (int s = 0; s < currents.Count; s++)
         {
-            if(item.GetComponent<EntityHealth>())
+            if (currents[s].GetComponent<EntityHealth>())
             {
-                item.GetComponent<EntityHealth>().TakeDamage(damage);
+                currents[s].GetComponent<EntityHealth>().TakeDamage(damage);
+                currents.RemoveAt(s);
             }
-            
         }
     }
 

@@ -7,6 +7,7 @@ using UnityEngine.InputSystem;
 public class AnimatorBinding : MonoBehaviour
 {
     [SerializeField] InputActionReference _move;
+    [SerializeField] InputActionReference _attack;
     Animator animator;
 
     private void Start()
@@ -14,6 +15,7 @@ public class AnimatorBinding : MonoBehaviour
         animator = GetComponent<Animator>();
         _move.action.performed += MoveAnim;
         _move.action.canceled += StopMoveAnim;
+        _attack.action.performed += AttackAnim;
     }
 
     private void StopMoveAnim(InputAction.CallbackContext obj)
@@ -32,5 +34,10 @@ public class AnimatorBinding : MonoBehaviour
     {
         _move.action.performed -= MoveAnim;
         _move.action.canceled -= StopMoveAnim;
+    }
+
+    private void AttackAnim(InputAction.CallbackContext obj)
+    {
+        animator.SetTrigger("Attack");
     }
 }

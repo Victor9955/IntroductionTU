@@ -1806,6 +1806,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bcca2186ac283d449a0bab40d85dce73, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _attack: {fileID: 2095557310079293559, guid: 7465c15ff2f50e14295da1356a60d5be, type: 3}
+  _hitRange: {fileID: 863578700}
 --- !u!1001 &1576631183
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2490,6 +2492,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _move: {fileID: 7317242067884208208, guid: 7465c15ff2f50e14295da1356a60d5be, type: 3}
+  _attack: {fileID: 2095557310079293559, guid: 7465c15ff2f50e14295da1356a60d5be, type: 3}
 --- !u!1 &1850274031
 GameObject:
   m_ObjectHideFlags: 0

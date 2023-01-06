@@ -7,6 +7,10 @@ public class HitEntity : MonoBehaviour
 {
     [SerializeField] int damage;
     List<GameObject> currents;
+    private void Start()
+    {
+        currents = new List<GameObject>();
+    }
 
     private void OnTriggerEnter(Collider other)
     {

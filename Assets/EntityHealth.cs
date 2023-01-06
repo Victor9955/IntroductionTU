@@ -8,7 +8,7 @@ using System.Security.Cryptography.X509Certificates;
 
 public class EntityHealth : MonoBehaviour
 {
-    [SerializeField] public int _maxHealth{ get; private set; }
+    [SerializeField] int _maxHealth;
     Rigidbody rb;
     public int _currentHealth { get; private set; }
 
@@ -52,6 +52,7 @@ public class EntityHealth : MonoBehaviour
         rb.AddRelativeForce(Vector3.back * 2.5f,ForceMode.Impulse);
         if (_currentHealth <= 0)
         {
+            Destroy(gameObject);
             OnDie.Invoke();
             return;
         }

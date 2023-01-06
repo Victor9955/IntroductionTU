@@ -61,10 +61,7 @@ public class EntityHealth : MonoBehaviour
 
     void GainLife(int gain)
     {
-        if (gain <= 0)
-        {
-            return;
-        }
+        if (gain <= 0) { return; }
 
         if (_currentHealth + gain >= _maxHealth)
         {

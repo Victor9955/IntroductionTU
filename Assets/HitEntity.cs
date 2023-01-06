@@ -5,33 +5,40 @@ using NaughtyAttributes;
 
 public class HitEntity : MonoBehaviour
 {
+    [SerializeField] bool isZone;
     [SerializeField] int damage;
     List<GameObject> currents;
+
     private void Start()
     {
-        currents = new List<GameObject>();
+        if(isZone)
+        {
+            StartCoroutine(HitZone());
+            StartCoroutine(ClearList());
+        }
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if(!currents.Contains(other.transform.parent.gameObject))
+        if (!currents.Contains(other.gameObject))
         {
-            currents.Add(other.transform.parent.gameObject);
+            currents.Add(other.gameObject);
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        currents.Remove(other.transform.parent.gameObject);
+         currents.Remove(other.gameObject);
     }
 
     public void Hit()
     {
+        Debug.Log("Hit");
         for (int s = 0; s < currents.Count; s++)
         {
-            if (currents[s].GetComponent<EntityHealth>())
+            if (currents[s].GetComponentInParent<EntityHealth>())
             {
-                currents[s].GetComponent<EntityHealth>().TakeDamage(damage);
+                currents[s].GetComponentInParent<EntityHealth>().TakeDamage(damage);
                 currents.RemoveAt(s);
             }
         }
@@ -39,4 +46,22 @@ public class HitEntity : MonoBehaviour
 
     [Button("Damage")]
     private void Damage() { Hit(); }
+
+    IEnumerator HitZone()
+    {
+        while (true)
+        {
+            yield return new WaitUntil(() => GetComponent<BoxCollider>().enabled);
+            Hit();
+        }
+    }
+
+    IEnumerator ClearList()
+    {
+        while (true)
+        {
+            yield return new WaitUntil(() => !GetComponent<BoxCollider>().enabled);
+            currents.Clear();
+        }
+    }
 }

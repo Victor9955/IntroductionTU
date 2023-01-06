@@ -35,7 +35,7 @@ public class EntityGold : MonoBehaviour
     {
         if (amount <= 0) { return; }
         _goldAmount += amount;
-        _goldEvent.Invoke();
+        _goldEvent?.Invoke();
     }
 
     [Button("Add 100 Gold")]

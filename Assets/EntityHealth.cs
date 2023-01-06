@@ -8,6 +8,7 @@ using NaughtyAttributes;
 public class EntityHealth : MonoBehaviour
 {
     [SerializeField] int _maxHealth;
+    Rigidbody rb;
     public int _currentHealth { get; private set; }
 
     [SerializeField] UnityEvent OnDie;
@@ -30,6 +31,7 @@ public class EntityHealth : MonoBehaviour
 
     private void Start()
     {
+        rb = GetComponent<Rigidbody>();
         _currentHealth = _maxHealth;
         OnLifeChange?.Invoke();
     }
@@ -46,6 +48,7 @@ public class EntityHealth : MonoBehaviour
             return;
         }
         _currentHealth -= damage;
+        rb.AddRelativeForce(Vector3.back * 2.5f,ForceMode.Impulse);
         if (life <= 0)
         {
             OnDie.Invoke();

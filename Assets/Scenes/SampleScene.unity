@@ -718,6 +718,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _maxHealth: 20
+  _currentHealth: 0
+  OnDie:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!4 &395592695
 Transform:
   m_ObjectHideFlags: 0
@@ -1771,6 +1775,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _maxHealth: 100
+  _currentHealth: 0
+  OnDie:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &1349007870
 MonoBehaviour:
   m_ObjectHideFlags: 0

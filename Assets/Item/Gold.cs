@@ -4,15 +4,13 @@ using UnityEngine;
 
 public class Gold : Item
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField] int amount;
 
-    // Update is called once per frame
-    void Update()
+    public override void Active(Collider collider)
     {
-        
+        if (collider.GetComponentInParent<EntityGold>())
+        {
+            collider.GetComponentInParent<EntityGold>().AddGold(10);
+        }
     }
 }

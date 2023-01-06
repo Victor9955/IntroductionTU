@@ -13,7 +13,4 @@ public class EntityHealth : MonoBehaviour
     {
         CurrentHealth = _maxHealth;
     }
-
-
-
 }

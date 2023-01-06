@@ -39,9 +39,9 @@ public class EntityHealth : MonoBehaviour
     #endregion
 
     [Button("TakeDamage")]
-    void TAKEDAMAGE() => TakeDamage(20, _currentHealth);
+    void TAKEDAMAGE() => TakeDamage(20);
 
-    void TakeDamage(int damage, int life)
+    public void TakeDamage(int damage)
     {
         if(damage <= 0)
         {
@@ -49,7 +49,7 @@ public class EntityHealth : MonoBehaviour
         }
         _currentHealth -= damage;
         rb.AddRelativeForce(Vector3.back * 2.5f,ForceMode.Impulse);
-        if (life <= 0)
+        if (_currentHealth <= 0)
         {
             OnDie.Invoke();
             return;

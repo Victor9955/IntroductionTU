@@ -10,7 +10,7 @@ public class Gold : Item
     {
         if (collider.GetComponentInParent<EntityGold>())
         {
-            collider.GetComponentInParent<EntityGold>().AddGold(10);
+            collider.GetComponentInParent<EntityGold>().AddGold(amount);
         }
     }
 }

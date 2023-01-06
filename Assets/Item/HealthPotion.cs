@@ -4,15 +4,12 @@ using UnityEngine;
 
 public class HealthPotion : Item
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] int heal;
+    public override void Active(Collider collider)
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        if (collider.GetComponentInParent<EntityHealth>())
+        {
+            collider.GetComponentInParent<EntityHealth>().GainLife(heal);
+        }
     }
 }

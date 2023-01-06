@@ -261,7 +261,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 58043774}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6.54, y: 0, z: 0.56}
+  m_LocalPosition: {x: 6.54, y: 0.74, z: 0.56}
   m_LocalScale: {x: 2.3547, y: 2.4779, z: 4.6736}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -281,6 +281,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f72b57696a4fd44686ee9ab3191a519, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isZone: 1
   damage: 10
 --- !u!95 &58043778
 Animator:
@@ -1389,6 +1390,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f72b57696a4fd44686ee9ab3191a519, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isZone: 0
   damage: 20
 --- !u!1 &1044316933
 GameObject:

@@ -11,7 +11,9 @@ public class HitEntity : MonoBehaviour
 
     private void Start()
     {
-        if(isZone)
+        currents = new List<GameObject>();
+
+        if (isZone)
         {
             StartCoroutine(HitZone());
             StartCoroutine(ClearList());
@@ -20,7 +22,7 @@ public class HitEntity : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (!currents.Contains(other.gameObject))
+        if(!currents.Contains(other.gameObject))
         {
             currents.Add(other.gameObject);
         }
@@ -33,7 +35,6 @@ public class HitEntity : MonoBehaviour
 
     public void Hit()
     {
-        Debug.Log("Hit");
         for (int s = 0; s < currents.Count; s++)
         {
             if (currents[s].GetComponentInParent<EntityHealth>())

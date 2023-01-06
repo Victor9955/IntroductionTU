@@ -8,11 +8,10 @@ public class AnimatorBinding : MonoBehaviour
 {
     [SerializeField] InputActionReference _move;
     [SerializeField] InputActionReference _attack;
-    Animator animator;
+    [SerializeField] Animator animator;
 
     private void Start()
     {
-        animator = GetComponent<Animator>();
         _move.action.performed += MoveAnim;
         _move.action.canceled += StopMoveAnim;
         _attack.action.performed += AttackAnim;

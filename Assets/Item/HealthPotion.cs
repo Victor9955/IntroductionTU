@@ -9,7 +9,7 @@ public class HealthPotion : Item
     {
         if (collider.GetComponentInParent<EntityHealth>())
         {
-            collider.GetComponentInParent<EntityHealth>().GainLife(heal);
+            collider.GetComponentInParent<EntityHealth>().Heal(heal);
         }
     }
 }

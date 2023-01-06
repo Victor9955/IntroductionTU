@@ -4,15 +4,11 @@ using UnityEngine;
 
 public class PowerUp : Item
 {
-    // Start is called before the first frame update
-    void Start()
+    public override void Active(Collider collider)
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        if (collider.GetComponentInParent<EntityHealth>())
+        {
+            collider.GetComponentInParent<EntityHealth>().LifeMax();
+        }
     }
 }

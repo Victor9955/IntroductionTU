@@ -4,10 +4,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using NaughtyAttributes;
+using System.Security.Cryptography.X509Certificates;
 
 public class EntityHealth : MonoBehaviour
 {
-    [SerializeField] int _maxHealth;
+    [SerializeField] public int _maxHealth{ get; private set; }
     Rigidbody rb;
     public int _currentHealth { get; private set; }
 
@@ -57,7 +58,7 @@ public class EntityHealth : MonoBehaviour
         OnLifeChange?.Invoke();
     }
 
-    void GainLife(int gain, int life)
+    void GainLife(int gain)
     {
         if (gain <= 0)
         {
@@ -66,11 +67,37 @@ public class EntityHealth : MonoBehaviour
         
         _currentHealth += gain;
 
-        if (life >= 100)
+        if (_currentHealth >= _maxHealth)
         {
             _currentHealth = _maxHealth;
             return;
         }
         OnLifeChange?.Invoke();
+    }
+
+    public void Heal(int heal)
+    {
+        GainLife(heal);
+    }
+
+    IEnumerator MaxHealthStart()
+    {
+        _maxHealth += 50;
+        _currentHealth = _maxHealth;
+        OnLifeChange?.Invoke();
+        yield return new WaitForSeconds(3.0f);
+    }
+    IEnumerator MaxHealthStop()
+    {
+        yield return new WaitForSeconds(3.0f);
+        _maxHealth -= 50;
+        _currentHealth = _maxHealth;
+        OnLifeChange?.Invoke();
+    }
+
+    public void LifeMax()
+    {
+        StartCoroutine(MaxHealthStart());
+        StartCoroutine(MaxHealthStop());
     }
 }

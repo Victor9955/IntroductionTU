@@ -11,7 +11,7 @@ public class HealthUI : MonoBehaviour
     [SerializeField] TextMeshProUGUI _text;
     [SerializeField] EntityHealth _playerHealth;
 
-    int CachedMaxHealth { get; set; }
+    int CachedMaxHealth { get ; set; }
 
     private void Start()
     {

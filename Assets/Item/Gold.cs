@@ -6,11 +6,16 @@ public class Gold : Item
 {
     [SerializeField] int amount;
 
-    public override void Active(Collider collider)
+    public override bool Active(Collider collider)
     {
         if (collider.GetComponentInParent<EntityGold>())
         {
             collider.GetComponentInParent<EntityGold>().AddGold(amount);
+            return true;
+        }
+        else
+        {
+            return false;
         }
     }
 }

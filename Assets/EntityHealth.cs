@@ -52,8 +52,8 @@ public class EntityHealth : MonoBehaviour
         rb.AddRelativeForce(Vector3.back * 2.5f,ForceMode.Impulse);
         if (_currentHealth <= 0)
         {
-            Destroy(gameObject);
             OnDie.Invoke();
+            Destroy(gameObject);
             return;
         }
         OnLifeChange?.Invoke();

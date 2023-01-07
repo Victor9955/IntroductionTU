@@ -6,9 +6,11 @@ public class Item : MonoBehaviour
 {
     private void OnTriggerEnter(Collider other)
     {
-        Active(other);
-        Destroy(gameObject);
+        if(other.gameObject.CompareTag("Player") && Active(other))
+        {
+            Destroy(gameObject);
+        }
     }
 
-    public virtual void Active(Collider collider) { }
+    public virtual bool Active(Collider collider) { return false; }
 }

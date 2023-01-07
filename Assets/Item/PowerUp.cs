@@ -4,11 +4,16 @@ using UnityEngine;
 
 public class PowerUp : Item
 {
-    public override void Active(Collider collider)
+    public override bool Active(Collider collider)
     {
         if (collider.GetComponentInParent<EntityHealth>())
         {
             collider.GetComponentInParent<EntityHealth>().LifeMax();
+            return true;
+        }
+        else
+        {
+            return false;
         }
     }
 }

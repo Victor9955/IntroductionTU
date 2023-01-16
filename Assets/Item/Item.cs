@@ -6,7 +6,7 @@ public class Item : MonoBehaviour
 {
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.CompareTag("Player") && Active(other))
+        if(other.gameObject.transform.parent.CompareTag("Player") && Active(other))
         {
             Destroy(gameObject);
         }
